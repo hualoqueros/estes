@@ -90,7 +90,7 @@ func (rmq *RMQ) ConsumeEvent(queueName string) (<-chan amqp.Delivery, error) {
 
 	msgs, err := rmq.Channel.Consume(
 		queue.Name,              // queue
-		"user-service-consumer", // consumer
+		"", // consumer
 		true,                    // auto-ack
 		false,                   // exclusive
 		false,                   // no-local
