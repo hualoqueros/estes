@@ -1,5 +1,7 @@
 # Estes
-RabbitMQ wrapper for Golang. we using github.com/streadway/amqp
+
+Event Driven helper for Golang. we using github.com/streadway/amqp
+you can check about Event driven Architecture [here](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch02.html)
 # How to Use
 ### Publish Event/Message
 first create file `publisher.go` 
@@ -23,13 +25,13 @@ func Publish(messageEvent MessageEvent) (*estes.RMQ, error) {
     	err = rmq.PublishEvent(msgByte)
     
     	if err != nil {
-    		fmt.Printf("ERROR RMQ : +%v", err)
-    	}
+    	    fmt.Printf("ERROR RMQ : +%v", err)
+        }
 }
 ```
 let assume we have file `user_controller.go` and we want to push event `user_created`, so you can call the `publisher.go` on your logic script  like this:
 ```go
-  msg := pubsub.MessageEvent{
+    msg := pubsub.MessageEvent{
 	Event: "user_created",
 	Data: map[string]interface{}{
 	        "username": "jhonDoe",
