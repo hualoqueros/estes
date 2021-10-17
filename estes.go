@@ -58,7 +58,6 @@ func InitRMQ(connectionString string, exchange string) (*RMQ, error) {
 }
 
 func (rmq *RMQ) PublishEvent(BodyMessage []byte) error {
-	fmt.Sprintf("CHECK Channel : +%v", rmq.Channel)
 	return rmq.Channel.Publish(rmq.Exchange, "", false, false, amqp.Publishing{
 		DeliveryMode: amqp.Persistent,
 		Timestamp:    time.Now(),
